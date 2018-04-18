@@ -116,7 +116,7 @@ canArise(S,act(D,X)):-occurs(S,omit(D,X),T).
 transTerm(S,E,F,T):-occurs(S,E,T),effect(E,neg(F)).
 transTerm(S,E,F2,T):-transTerm(S,E,F1,T),hyp(F1,F2),posFluent(F2).
 irrelevant(S,E1,T1,E2,T2):-transTerm(S,E1,F1,T1),prec(F1,E2),prec(F2,E2),not holds(S,F2,T2),not transTerm(S,E1,F2,T1),T2>T1,time(T2).
-relevant(S,E1,T1,E2):-transTerm(S,E1,F1,T1),not irrelevant(S,E1,T1,E2,T2),T2>T1,time(T2),event(E2). 
+relevant(S,E1,T1,E2):-transTerm(S,E1,F1,T1),prec(F1,E2),not irrelevant(S,E1,T1,E2,T2),T2>T1,time(T2). 
 
 negRel(prevents;excludes).
 r(S,prevents,E,T,U):-transTerm(S,E,F,T),prec(F,U),relevant(S,E,T,U),not canArise(S,U),auto(U).
