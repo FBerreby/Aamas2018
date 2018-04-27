@@ -120,7 +120,7 @@ relevant(S,E1,T1,E2):-transTerm(S,E1,F1,T1),prec(F1,E2),not irrelevant(S,E1,T1,E
 
 negRel(prevents;excludes).
 r(S,prevents,E,T,U):-transTerm(S,E,F,T),prec(F,U),relevant(S,E,T,U),not canArise(S,U),auto(U).
-r(S,excludes,E,T,A):-transTerm(S,E,F,T),prec(F,A),relevant(S,E,T,A),not canArise(0,A),action(A).
+r(S,excludes,E,T,A):-transTerm(S,E,F,T),prec(F,A),relevant(S,E,T,A),not canArise(S,A),action(A).
 r(S,excludes,E,T,omit(D,X)):-r(S,excludes,E,T,act(D,X)). 
 
 % ---------- Section 4: SCENARIO-BASED CAUSALITY 
